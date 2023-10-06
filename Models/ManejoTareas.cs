@@ -6,4 +6,21 @@ public class ManejoTareas
     {
         this.acceso = accesoTareas;
     }
+    public Tarea NuevaTarea(Tarea nuevaTarea)
+    {
+        var tareas = acceso.LeerT();
+        if (nuevaTarea!=null)
+        {
+            var id = tareas.Count()+1;
+            nuevaTarea.Id = id;
+            tareas.Add(nuevaTarea);
+            acceso.GuardarT(tareas);
+            return nuevaTarea;
+        }
+        return nuevaTarea;
+    }
+    public List<Tarea> Tareas ()
+    {
+        return acceso.LeerT();
+    }
 }
