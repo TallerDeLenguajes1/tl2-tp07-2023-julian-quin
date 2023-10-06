@@ -6,15 +6,20 @@ public class AccesoADatos
 {
     private const string path = "AccesoADatos/Tareas.json";
     public List<Tarea> LeerT ()
-    {
+    {   
+        var tareas = new List<Tarea>();
        
         if (File.Exists(path))
         {
             var TextoJson = File.ReadAllText(path);
-            var tareas = JsonSerializer.Deserialize<List<Tarea>>(TextoJson);
-            return tareas;   
+            if(TextoJson!=null && TextoJson.Length > 10)
+            {
+                tareas = JsonSerializer.Deserialize<List<Tarea>>(TextoJson);
+                return tareas; 
+            }
+             
         }
-        return new List<Tarea>();
+        return tareas;
     }
 
     public void GuardarT(List<Tarea> tareas)
