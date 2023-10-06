@@ -17,6 +17,19 @@ public class ManejoTareasController : ControllerBase
         acceso = new AccesoADatos();
         manejadorTareas = new(acceso);   
     }
-    
+    [HttpPut("Nueva-Tarea")]
+    public ActionResult <Tarea> AddTarea(Tarea nuevaTarea)
+    {
+        if (manejadorTareas.NuevaTarea(nuevaTarea)!=null)
+        {
+            return Ok(nuevaTarea);
+        }
+        return BadRequest("Error en la solicitud");
 
+    }
+    [HttpGet]
+    public ActionResult<List<Tarea>> lookTareas()
+    {
+        return Ok(manejadorTareas.Tareas());
+    }
 }
