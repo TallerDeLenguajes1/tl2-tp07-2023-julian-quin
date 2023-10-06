@@ -32,4 +32,20 @@ public class ManejoTareasController : ControllerBase
     {
         return Ok(manejadorTareas.Tareas());
     }
+    [HttpGet("Tarea-id")]
+    public ActionResult<Tarea> LookTareaId(int id)
+    {
+        var tareaSeach = manejadorTareas.BuscarTareaViaId(id);
+        if (tareaSeach!=null)
+        {
+            return Ok(tareaSeach);
+        }
+        return NotFound("Recurso No encontrado");
+    }
+    [HttpPut("Actualizar-Tarea")]
+    public ActionResult ActualizarTarea(int id, int nuevoEstado)
+    {
+        if(manejadorTareas.ActualizarTarea(id, nuevoEstado)) return Ok("Recurso Especicfico Acualizado");
+         else return BadRequest("Error en la solicitud");
+    }
 }
