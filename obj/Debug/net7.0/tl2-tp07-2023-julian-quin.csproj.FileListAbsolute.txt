@@ -31,3 +31,4 @@ C:\Users\julio\Desktop\taller2\tl2-tp07-2023-julian-quin\obj\Debug\net7.0\refint
 C:\Users\julio\Desktop\taller2\tl2-tp07-2023-julian-quin\obj\Debug\net7.0\tl2-tp07-2023-julian-quin.pdb
 C:\Users\julio\Desktop\taller2\tl2-tp07-2023-julian-quin\obj\Debug\net7.0\tl2-tp07-2023-julian-quin.genruntimeconfig.cache
 C:\Users\julio\Desktop\taller2\tl2-tp07-2023-julian-quin\obj\Debug\net7.0\ref\tl2-tp07-2023-julian-quin.dll
+C:\Users\julio\Desktop\taller2\tl2-tp07-2023-julian-quin\bin\Debug\net7.0\AccesoADatos\Tareas.json
