@@ -3,7 +3,7 @@ public enum Estado
 {
     pendiente,
     EnProgreso,
-    compleada,
+    completada,
     
 }
 public class Tarea
@@ -17,4 +17,18 @@ public class Tarea
     public string Titulo { get => titulo; set => titulo = value; }
     public string Descripcion { get => descripcion; set => descripcion = value; }
     public Estado Estado { get => estado; set => estado = value; }
+
+    public void ModificarEstado (int nuevoEstado)
+    {
+        switch (nuevoEstado)
+        {
+            case 1: estado = Estado.EnProgreso;
+            break;
+            case 2: estado = Estado.completada;
+            break;
+            default:  estado = Estado.pendiente;
+            break;
+        }
+        
+    }
 }
