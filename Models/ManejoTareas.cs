@@ -45,4 +45,24 @@ public class ManejoTareas
         }
         return false;
     }
+
+    public bool EliminarTarea(int id)
+    {
+        var tareas = acceso.LeerT();
+        var tarea = tareas.FirstOrDefault(tarea => tarea.Id == id);
+        if (tareas!=null)
+        {
+            tareas.Remove(tarea);
+            acceso.GuardarT(tareas);
+            return true;
+        }
+        return false;
+    }
+
+    public List<Tarea> TareasCompletadas()
+    {
+        var tareas = acceso.LeerT();
+        var tareasCompletas = tareas.FindAll(tarea => tarea.Estado == Estado.completada);
+        return tareasCompletas;
+    }
 }
