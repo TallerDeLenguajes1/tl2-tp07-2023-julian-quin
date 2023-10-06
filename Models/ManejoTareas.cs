@@ -23,4 +23,26 @@ public class ManejoTareas
     {
         return acceso.LeerT();
     }
+    public Tarea BuscarTareaViaId(int id)
+    {
+        var tareas = acceso.LeerT();
+        var tarea = tareas.FirstOrDefault(tarea => tarea.Id == id);
+        if (tarea!=null)
+        {
+            return tarea;
+        } else  return tarea;  
+    }
+
+    public bool ActualizarTarea(int id, int nuevoEstado)
+    {
+        var tareas = acceso.LeerT();
+        var tarea = tareas.FirstOrDefault(tarea => tarea.Id == id);
+        if (tarea!= null)
+        {
+            tarea.ModificarEstado(nuevoEstado);
+            acceso.GuardarT(tareas);
+            return true;  
+        }
+        return false;
+    }
 }
