@@ -17,16 +17,7 @@ public class ManejoTareasController : ControllerBase
         acceso = new AccesoADatos();
         manejadorTareas = new(acceso);   
     }
-    [HttpPut("Nueva-Tarea")]
-    public ActionResult <Tarea> AddTarea(Tarea nuevaTarea)
-    {
-        if (manejadorTareas.NuevaTarea(nuevaTarea)!=null)
-        {
-            return Ok(nuevaTarea);
-        }
-        return BadRequest("Error en la solicitud");
 
-    }
     [HttpGet]
     public ActionResult<List<Tarea>> lookTareas()
     {
@@ -42,10 +33,35 @@ public class ManejoTareasController : ControllerBase
         }
         return NotFound("Recurso No encontrado");
     }
+
+    [HttpGet("Tareas-Completas")]
+    public ActionResult<List<Tarea>> TareasComplete()
+    {
+        var tareasCompletas = manejadorTareas.TareasCompletadas();
+        return Ok(tareasCompletas);
+    }
+
+    [HttpPost("Nueva-Tarea")]
+    public ActionResult <Tarea> AddTarea(Tarea nuevaTarea)
+    {
+        if (manejadorTareas.NuevaTarea(nuevaTarea)!=null)
+        {
+            return Ok(nuevaTarea);
+        }
+        return BadRequest("Error en la solicitud");
+
+    }
+
     [HttpPut("Actualizar-Tarea")]
     public ActionResult ActualizarTarea(int id, int nuevoEstado)
     {
         if(manejadorTareas.ActualizarTarea(id, nuevoEstado)) return Ok("Recurso Especicfico Acualizado");
          else return BadRequest("Error en la solicitud");
+    }
+    [HttpDelete("Eliminar-tarea")]
+    public ActionResult DeleteTarea (int id)
+    {
+        if(manejadorTareas.EliminarTarea(id))return Ok("Recurso Eliminado");
+        return NotFound("Recurso no encontrado");
     }
 }
